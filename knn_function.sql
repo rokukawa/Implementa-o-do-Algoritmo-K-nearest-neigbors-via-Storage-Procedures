@@ -1,4 +1,3 @@
-/* GUSTAVO ROKUKAWA CAMARGO - RA 2209772*/
 
 -- FUNCTION: public.knn_iris(real, real, real, real, integer)
 
@@ -26,9 +25,9 @@ DECLARE
 		qnt_virginica integer;
 		resposta text;
 		registro RECORD; /* a variavel registro do tipo RECORD, funcionara como auxiliar das informações de cada laço do FOR */
-		tupla tupla_iris; /* variavel customizada, onde tera os campo distancia (euclidiana), id_iris (id da flor) e classe (nome da flor) */
+		tupla tupla_iris; /* variavel customizada, onde terá os campo distância (euclidiana), id_iris (id da flor) e classe (nome da flor) */
 	BEGIN 
-		FOR registro IN SELECT id_iris FROM iris LOOP /* laço de repetição percorrendo todo a tabela iris */
+		FOR registro IN SELECT id_iris FROM iris LOOP /* laço de repetição percorrendo toda a tabela iris */
 			/* o select fará o retorno de todos os cálculos euclidianos das amostras e armazenará na variavel tupla do tipo tupla_iris */
 			SELECT INTO tupla
 				I.id_iris,
@@ -39,12 +38,11 @@ DECLARE
 				I.classe
 			FROM iris I
 			WHERE I.id_iris = registro.id_iris;
-			INSERT INTO table_iris VALUES(tupla.id_iris, tupla.distancia, tupla.classe); /* adiciona os valores da consulta à uma tabela auxiliar TABLE_IRIS */
+			INSERT INTO table_iris VALUES(tupla.id_iris, tupla.distancia, tupla.classe); /* adiciona os valores da consulta à uma tabela auxiliar table_iris */
  		END LOOP;
 		
 		/* cada select count, fará a contagem de cada tipo de classe na tabela dos conjunto de k vizinho mais próximos e armazenará em suas respectivas 
-		variaveis, os valores retornado pelo count */
-		
+		variáveis, os valores retornado pelo count */
 		SELECT COUNT(*) INTO qnt_setosa
 		FROM 
 		(SELECT * FROM table_iris ORDER BY distancia_tb_iris LIMIT valor_k) AS f
@@ -61,8 +59,7 @@ DECLARE
 		WHERE classe_tb_iris = 'Iris-virginica';
 		
 		/* cada condição if, analizará qual variavel possui mais classe entre os vizinho mais próximos e assim, 
-		retornará a classe que a consulta mais representa */
-		
+		retornará a classe que a consulta mais representar */
 		IF qnt_setosa >= qnt_versicolor AND qnt_setosa >= qnt_virginica THEN
 			resposta := 'SETOSA';
 			RAISE NOTICE 'CLASSE %', resposta;
