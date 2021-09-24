@@ -33,4 +33,4 @@ Após informar os dados de entrada, o cálculo da dissimilaridade entre diferent
 - Determinar a altura da petála.
 
 - Informar o valor de K (valor de vizinhos a ser comparado).
-<ol>
+</ol>
