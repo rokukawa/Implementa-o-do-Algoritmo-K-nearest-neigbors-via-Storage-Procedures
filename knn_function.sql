@@ -3,7 +3,7 @@
 
 -- DROP FUNCTION public.knn_iris(real, real, real, real, integer);
 
-CREATE OR REPLACE FUNCTION public.knn_iris(
+CREATE OR REPLACE FUNCTION public.knn_function(
 	real,
 	real,
 	real,
