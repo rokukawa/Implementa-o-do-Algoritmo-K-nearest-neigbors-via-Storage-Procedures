@@ -1,7 +1,7 @@
 
--- FUNCTION: public.knn_iris(real, real, real, real, integer)
+-- FUNCTION: public.knn_function(real, real, real, real, integer)
 
--- DROP FUNCTION public.knn_iris(real, real, real, real, integer);
+-- DROP FUNCTION public.knn_function(real, real, real, real, integer);
 
 CREATE OR REPLACE FUNCTION public.knn_function(
 	real,
@@ -76,5 +76,5 @@ DECLARE
 	END;
 $BODY$;
 
-ALTER FUNCTION public.knn_iris(real, real, real, real, integer)
+ALTER FUNCTION public.knn_function(real, real, real, real, integer)
     OWNER TO postgres;
