@@ -1,5 +1,3 @@
-/* GUSTAVO ROKUKAWA CAMARGO - RA 2209772*/
-
 -- Table: public.iris
 
 -- DROP TABLE public.iris;
